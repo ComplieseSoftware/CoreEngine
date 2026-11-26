@@ -7,7 +7,7 @@
 ![Platform](https://img.shields.io/badge/Platform-Windows%20x64-orange.svg)
 ![License](https://img.shields.io/badge/License-MIT-lightgrey.svg)
 
-**CoreEngine** is a lightweight, custom 2D/3D game engine built from scratch in modern **C++20** and **OpenGL 3.3 Core Profile**. Designed from first principles, the engine focuses on clean architectural boundaries, zero-overhead abstractions, and direct hardware interaction.
+**Core Engine** is a lightweight, custom 2D/3D game engine built from scratch in modern **C++20** and **OpenGL 3.3 Core Profile**. Designed from first principles, the engine focuses on clean architectural boundaries, zero-overhead abstractions, and direct hardware interaction.
 
 ---
 
@@ -15,7 +15,7 @@
 
 Hi! I'm a **14-year-old** self-taught developer passionate about low-level graphics programming, C++, and game engine architecture.
 
-I started building **CoreEngine** from scratch to deeply understand how modern game engines work under the hood—from OpenGL rendering pipelines to memory management and application lifecycles. Since this is an active learning journey, the codebase is constantly evolving.
+I started building **Core Engine** from scratch to deeply understand how modern game engines work under the hood—from OpenGL rendering pipelines to memory management and application lifecycles. Since this is an active learning journey, the codebase is constantly evolving.
 
 Constructive feedback, code reviews, architecture tips, and contributions are always welcome! If you spot something that can be improved, feel free to open an Issue or submit a Pull Request.
 
@@ -25,7 +25,7 @@ Constructive feedback, code reviews, architecture tips, and contributions are al
 ## Key Architecture & Features
 
 - **Decoupled Engine-Game Architecture:**
-  - `CoreEngine` compiles as an independent Static Library (`.lib`).
+  - `Core Engine` compiles as an independent Static Library (`.lib`).
   - Game client projects (such as `Pong.exe`) interact strictly via the public `api/` layer.
 - **Application Lifecycle & Event Hooks:**
   - Centralized `Application` orchestrator managing window creation, runtime state, and clean shutdown.
