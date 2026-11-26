@@ -1,0 +1,151 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Исходные файлы">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;c++;cppm;ixx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Файлы заголовков">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;h++;hm;inl;inc;ipp;xsd</Extensions>
+    </Filter>
+    <Filter Include="Файлы ресурсов">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="Shaders">
+      <UniqueIdentifier>{c0981c5a-2591-4466-bf9c-abb7d52b37c2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Renderer">
+      <UniqueIdentifier>{6c25e08d-5ccb-4ee2-9b66-74514fa12f8d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Math">
+      <UniqueIdentifier>{5b94c748-37df-445d-868f-6f4e63652700}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Renderer\Window">
+      <UniqueIdentifier>{ab38b1f3-33ed-4f42-87e1-bce00292fa3c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Shaders\src">
+      <UniqueIdentifier>{378cc4bf-cccb-4230-9efe-031adefd1f01}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Renderer\Texture">
+      <UniqueIdentifier>{1b7d9bfe-5649-4985-be0e-e91c47ab825e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Res">
+      <UniqueIdentifier>{45d61ff0-b18d-4304-a392-65b0b1a9feef}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Renderer\Vertex3D">
+      <UniqueIdentifier>{6498aa8a-6be7-4583-83c7-5fc28bd7764b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Logger">
+      <UniqueIdentifier>{4548e79d-8cf8-4009-b972-2903f84aff64}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="API">
+      <UniqueIdentifier>{a0eeb8c0-2969-413d-8f6d-525d5d028020}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="API\Application">
+      <UniqueIdentifier>{1fe4b393-47b2-497c-8861-5ddd9928b18e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="API\Input">
+      <UniqueIdentifier>{ab8710b3-77fc-45ec-8353-44e8a1b5f716}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="API\Texture">
+      <UniqueIdentifier>{ffc943ff-2970-4693-98e1-7326b776bd37}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="main.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
+    <ClCompile Include="Dependencies\GLAD\src\glad.c">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
+    <ClCompile Include="src\renderer\renderer.cpp">
+      <Filter>Renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="src\math\vector\vector.cpp">
+      <Filter>Math</Filter>
+    </ClCompile>
+    <ClCompile Include="src\renderer\window\windowRenderer.cpp">
+      <Filter>Renderer\Window</Filter>
+    </ClCompile>
+    <ClCompile Include="src\renderer\textures\texture2D.cpp">
+      <Filter>Renderer\Texture</Filter>
+    </ClCompile>
+    <ClCompile Include="Dependencies\stb_image\stb_image.cpp">
+      <Filter>Файлы ресурсов</Filter>
+    </ClCompile>
+    <ClCompile Include="src\logger\logger.cpp">
+      <Filter>Logger</Filter>
+    </ClCompile>
+    <ClCompile Include="src\shaders\src\Shader.cpp">
+      <Filter>Shaders\src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\api\Application.cpp">
+      <Filter>API\Application</Filter>
+    </ClCompile>
+    <ClCompile Include="src\api\input\Input.cpp">
+      <Filter>API\Input</Filter>
+    </ClCompile>
+    <ClCompile Include="src\api\texture\texture2DApi\GameTexture2D.cpp">
+      <Filter>API\Texture</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="src\renderer\window\windowRenderer.h">
+      <Filter>Renderer\Window</Filter>
+    </ClInclude>
+    <ClInclude Include="Dependencies\stb_image\stb_image.h">
+      <Filter>Файлы ресурсов</Filter>
+    </ClInclude>
+    <ClInclude Include="src\renderer\textures\texture2D.h">
+      <Filter>Renderer\Texture</Filter>
+    </ClInclude>
+    <ClInclude Include="src\renderer\renderer.h">
+      <Filter>Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="src\logger\logger.h">
+      <Filter>Logger</Filter>
+    </ClInclude>
+    <ClInclude Include="src\math\vector\vector.h">
+      <Filter>Math</Filter>
+    </ClInclude>
+    <ClInclude Include="src\renderer\vertex3D\Vertex3D.h">
+      <Filter>Renderer\Vertex3D</Filter>
+    </ClInclude>
+    <ClInclude Include="src\config\Config.h">
+      <Filter>Исходные файлы</Filter>
+    </ClInclude>
+    <ClInclude Include="src\api\Application.h">
+      <Filter>API\Application</Filter>
+    </ClInclude>
+    <ClInclude Include="src\shaders\src\Shader.h">
+      <Filter>Shaders\src</Filter>
+    </ClInclude>
+    <ClInclude Include="src\api\input\Input.h">
+      <Filter>API\Input</Filter>
+    </ClInclude>
+    <ClInclude Include="src\api\input\InputKeys.h">
+      <Filter>API\Input</Filter>
+    </ClInclude>
+    <ClInclude Include="src\api\texture\texture2DApi\GameTexture2D.h">
+      <Filter>API\Texture</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="Resource.rc">
+      <Filter>Res</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="src\shaders\fragment.frag">
+      <Filter>Shaders</Filter>
+    </None>
+    <None Include="src\shaders\vertex.vert">
+      <Filter>Shaders</Filter>
+    </None>
+    <None Include="src\shaders\vertexUI.vert">
+      <Filter>Shaders</Filter>
+    </None>
+  </ItemGroup>
+</Project>

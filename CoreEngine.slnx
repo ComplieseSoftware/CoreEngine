@@ -1,0 +1,8 @@
+<Solution>
+  <Configurations>
+    <Platform Name="x64" />
+    <Platform Name="x86" />
+  </Configurations>
+  <Project Path="../Pong/Pong.vcxproj" Id="b7a011a1-9ed7-4575-8347-ab83136c97c1" />
+  <Project Path="CoreEngine.vcxproj" Id="79ad2cc0-f4b9-4195-a308-0ab6a4f189ef" />
+</Solution>
