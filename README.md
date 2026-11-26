@@ -11,6 +11,15 @@
 
 ---
 
+## About the Author
+
+Hi! I'm a **14-year-old** self-taught developer passionate about low-level graphics programming, C++, and game engine architecture.
+
+I started building **CoreEngine** from scratch to deeply understand how modern game engines work under the hood—from OpenGL rendering pipelines to memory management and application lifecycles. Since this is an active learning journey, the codebase is constantly evolving.
+
+Constructive feedback, code reviews, architecture tips, and contributions are always welcome! If you spot something that can be improved, feel free to open an Issue or submit a Pull Request.
+
+---
 ![Gameplay Demo](materials/GameplayCoreEngineRecord.gif)
 
 ## Key Architecture & Features
