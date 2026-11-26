@@ -147,5 +147,7 @@
     <None Include="src\shaders\vertexUI.vert">
       <Filter>Shaders</Filter>
     </None>
+    <None Include="LICENSE.md" />
+    <None Include="README.md" />
   </ItemGroup>
 </Project>
