@@ -11,33 +11,33 @@
 void framebuffer_size_callback(GLFWwindow* window, const int width, const int height);
 
 void Window::init(const int width, const int height, const std::string& title) {
-	// Далее мы будем настраивать GLFW к работе:
-	Logger::init("", true); //Инициализируем логгер
+	// Next, we will configure GLFW:
+	Logger::init("", true); // Initialize the logger
 
-	if (!glfwInit()) { //Инициализируем и проверяем GLFW
+	if (!glfwInit()) { // Initialize and verify GLFW
 		Logger::fatal("Failed to initialize GLFW");
 
 		throw std::runtime_error("Failed to initialize GLFW");
 	}
-	glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3); // Указываем число, перед точкой: версии OpenGL, которую мы используем(у нас OpenGL 3.3)
-	glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3); // Повторяем то же самое, только указываем число, после точки, если бы использовали версию 3.4, то здесь было б 4, а не 3
-	glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE); // Указываем, что GLFW должен убрать из нашей работы устаревшие функции OpenGl(ограничить)
+	glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3); // Specify the major version number (before the decimal point) of the OpenGL version we are using (we are using OpenGL 3.3)
+	glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3); // Repeat the same, but specify the minor version number (after the decimal point)—for example, for version 3.4, this would be 4 instead of 3
+	glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE); // Instruct GLFW to exclude deprecated OpenGL functions (restrict to core profile)
 	//Мы закончили настройку GLFW
 
-	m_window = glfwCreateWindow(width, height, title.c_str(), nullptr, nullptr); //Создаём окно(используем указатель, т.к окно может не создаться и для дальнейшей проверки на nullptr)
+	m_window = glfwCreateWindow(width, height, title.c_str(), nullptr, nullptr); // Create the window (use a pointer because creation may fail, allowing us to check for nullptr later)
 
-	if (m_window == nullptr) { //Проверяем создалось ли окно
+	if (m_window == nullptr) { // Check if the window was created
 		Logger::fatal("Failed to create a GLFW Window");
 
-		glfwTerminate(); //Уничтожаем GLFW(программу)
+		glfwTerminate(); // Terminate GLFW (shut down the program)
 		throw std::runtime_error("Failed to create a GLFW Window");
 	}
 
-	glfwMakeContextCurrent(m_window); //Сообщаем, что наш window будет основным контекстом в текущем потоке
+	glfwMakeContextCurrent(m_window); // Set our window as the main OpenGL context on the current thread
 
-	glfwSetFramebufferSizeCallback(m_window, framebuffer_size_callback); //Когда например пользователь растягивает окно, мы автоматически меняем область видимости, чтобы не было чёрных частей
+	glfwSetFramebufferSizeCallback(m_window, framebuffer_size_callback); // When the user resizes the window, automatically adjust the viewport to avoid black bars
 
-	if (!gladLoadGLLoader((GLADloadproc)glfwGetProcAddress)) { // Проверяем инициализацию GLAD
+	if (!gladLoadGLLoader((GLADloadproc)glfwGetProcAddress)) { // Check GLAD initialization
 		Logger::fatal("Failed to initialize GLAD");
 		glfwTerminate();
 
@@ -81,10 +81,15 @@ void Window::setIcon(const std::string& iconPath) {
 }
 
 GLFWwindow* Window::getWindow() const {
-	return m_window;
+	if (m_window == nullptr) {
+		Logger::fatal("Window wasn't initialized");
+	}
+	else {
+		return m_window;
+	}
 }
 
-void framebuffer_size_callback(GLFWwindow* window, const int width, const int height) { //Функция нужна для того, чтобы автоматически изменять glViewport, если пользователь изменит размеры окна
-	glViewport(0, 0, width, height); //Указывыем OpenGl размеры нашего окна, чтобы он знал, как мы хотим отобразить координаты относительно окна. В первых двух параметрах, мы указываем положение нижнего левого угла окна. В последних двух, мы указываем ширину и высоту окна в пикселях(просто тавим значения из нашего window)
-	//Мы бы могли указать более меньшие размеры окна, тогда бы вся отрисовка отображалась в боле маленьком окне
+void framebuffer_size_callback(GLFWwindow* window, const int width, const int height) { // Callback function to automatically update glViewport whenever the user resizes the window
+	glViewport(0, 0, width, height); // Tell OpenGL the dimensions of our window so it knows how to map coordinates relative to the window. The first two parameters set the location of the lower-left corner, and the last two specify the width and height in pixels (we simply pass the values from our window)
+	// We could specify smaller dimensions, in which case all rendering would appear within a smaller area of the window
 }

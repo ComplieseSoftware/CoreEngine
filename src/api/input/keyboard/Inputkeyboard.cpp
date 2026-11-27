@@ -1,10 +1,10 @@
-#include "Input.h"
-#include "InputKeys.h"
+#include "InputKeyboard.h"
+#include "InputKeysKeyboard.h"
 #include "logger/Logger.h"
 
 #include <iostream>
 
-bool Input::isPressed(Key key) {
+bool InputKeyboard::isPressed(Key key) {
 	if (m_window == nullptr) {
 		Logger::fatal("Error");
 		return false;
@@ -14,6 +14,6 @@ bool Input::isPressed(Key key) {
 	return inputKey == GLFW_PRESS;
 }
 
-void Input::init(Window* window) {
+void InputKeyboard::init(Window* window) {
 	m_window = window;
 }

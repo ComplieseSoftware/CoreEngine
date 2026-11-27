@@ -1,10 +1,10 @@
 #pragma once
 
-#include "InputKeys.h"
+#include "InputKeysKeyboard.h"
 #include "logger/Logger.h"
 #include "renderer/window/WindowRenderer.h"
 
-class Input {
+class InputKeyboard {
 private:
 	inline static Window* m_window{};
 public:

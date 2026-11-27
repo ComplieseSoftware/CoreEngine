@@ -32,6 +32,7 @@ Name: "desktopicon"; Description: "{cm:CreateDesktopIcon}"; GroupDescription: "{
 Source: "N:\CoreEngine\x64\Release\Pong.exe"; DestDir: "{app}"; Flags: ignoreversion
 Source: "N:\CoreEngine\x64\Release\Shaders\*"; DestDir: "{app}\Shaders"; Flags: ignoreversion recursesubdirs createallsubdirs
 Source: "N:\CoreEngine\x64\Release\materials\*"; DestDir: "{app}\materials"; Flags: ignoreversion recursesubdirs createallsubdirs
+Source: "N:\CoreEngine\x64\Release\sounds\*"; DestDir: "{app}\sounds"; Flags: ignoreversion recursesubdirs createallsubdirs
 
 [Icons]
 Name: "{group}\Pong"; Filename: "{app}\Pong.exe"; WorkingDir: "{app}"

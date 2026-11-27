@@ -40,51 +40,51 @@ int Shader::init(const char* vertexPath, const char* fragmentPath) {
 	const char* vShaderCode{ vertexCode.c_str() };
 	const char* fShaderCode{ fragmentCode.c_str() };
 
-	//Тут мы будем проверять компиляцию и линковку(далее в коде) шейдеров
-	int success; //Число, которое будет указывать на успех
-	char infoLog[512]; //Массив char для лога
+	// Here we will check shader compilation and linking (later in the code)
+	int success; // Integer flag indicating whether the operation succeeded
+	char infoLog[512]; // Char array to store the info log
 
 	uint32_t vertexShader;
 	uint32_t fragmentShader;
 
-	vertexShader = glCreateShader(GL_VERTEX_SHADER); //Здесь мы указываем GL_VERTEX_SHADER, т.к мы работаем с вершинным шейдером
-	glShaderSource(vertexShader, 1, &vShaderCode, NULL); //Приклрепляем исходный код шейдера к объекту шейдера. В 1-ом аргументе передаём объект шейдера, во 2-ом указываем, сколько строк кода мы передаём в качестве исходного кода(в нашем случае одна строка), в 3-ем передаём сам исходный код, через ссылку для экономии памяти, 4-ый можем поставить, как NULL
-	glCompileShader(vertexShader); //Компилируем шейдер
+	vertexShader = glCreateShader(GL_VERTEX_SHADER); // Here we specify GL_VERTEX_SHADER because we are working with a vertex shader
+	glShaderSource(vertexShader, 1, &vShaderCode, NULL); // Attach the shader source code to the shader object. The 1st argument is the shader object, the 2nd specifies how many strings we are passing as source code (one string in our case), the 3rd passes the source code itself by pointer to save memory, and the 4th can be set to NULL
+	glCompileShader(vertexShader); //Compile the shader
 
-	glGetShaderiv(vertexShader, GL_COMPILE_STATUS, &success); //Проверяем компилцию
+	glGetShaderiv(vertexShader, GL_COMPILE_STATUS, &success); // Check if the vertex shader compiled successfully
 
 	if (!success) {
-		glGetShaderInfoLog(vertexShader, sizeof(infoLog), NULL, infoLog); //Выводим соощения компилятора GLSL
+		glGetShaderInfoLog(vertexShader, sizeof(infoLog), NULL, infoLog); // Output GLSL compiler messages
 
 		Logger::fatal("CORE_ENGINE -> ERROR -> SHADER -> VERTEX_SHADER -> COMPILATION_FAILED");
 		Logger::fatal("Failed to compile vertex shader");
-		Logger::info(infoLog); //Логгируем ошибки
+		Logger::info(infoLog); // Log errors
 
 		return -1;
 	}
 
-	fragmentShader = glCreateShader(GL_FRAGMENT_SHADER); //Здесь мы указываем GL_FRAGMENT_SHADER, т.к мы работаем с фрагментным шейдером
-	glShaderSource(fragmentShader, 1, &fShaderCode, NULL); //Приклрепляем исходный код шейдера к объекту шейдера. В 1-ом аргументе передаём объект шейдера, во 2-ом указываем, сколько строк кода мы передаём в качестве исходного кода(в нашем случае одна строка), в 3-ем передаём сам исходный код, через ссылку для экономии памяти, 4-ый можем поставить, как NULL
-	glCompileShader(fragmentShader); //Компилируем наш шейдер
+	fragmentShader = glCreateShader(GL_FRAGMENT_SHADER); // Here we specify GL_FRAGMENT_SHADER because we are working with a fragment shader
+	glShaderSource(fragmentShader, 1, &fShaderCode, NULL); // Attach the shader source code to the shader object. The 1st argument is the shader object, the 2nd specifies how many strings we are passing as source code (one string in our case), the 3rd passes the source code itself by pointer to save memory, and the 4th can be set to NULL
+	glCompileShader(fragmentShader); // Compile our shader
 
-	glGetShaderiv(fragmentShader, GL_COMPILE_STATUS, &success); //Проверяем стату компиляции
+	glGetShaderiv(fragmentShader, GL_COMPILE_STATUS, &success); // Check shader compilation status
 
 	if (!success) {
 		glGetShaderInfoLog(fragmentShader, sizeof(infoLog), NULL, infoLog);
 
 		Logger::fatal("CORE_ENGINE -> ERROR -> SHADER -> FRAGMENT_SHADER -> COMPILATION_FAILED");
 		Logger::fatal("Failed to compile fragment shader");
-		Logger::info(infoLog); //Логгируем ошибки
+		Logger::info(infoLog); // Log errors
 
 		return -1;
 	}
 
-	ID = glCreateProgram(); //Создаём окончательную объединёную версию шейдеров(программу шейдеров). Это нужно, чтобы OpenGL мог использовать наши шейдеры для дальнейшей отрисовки
-	glAttachShader(ID, vertexShader); //Кладём в программу шейдеров наш вершинный шейдер
-	glAttachShader(ID, fragmentShader); //Кладём в программу шейдеров наш фрагментный шейдер
-	glLinkProgram(ID); //Объединяем всё в одну программу шейдеров
+	ID = glCreateProgram(); // Create the final linked shader program. This allows OpenGL to use our shaders for subsequent rendering
+	glAttachShader(ID, vertexShader); // Attach the vertex shader to the shader program
+	glAttachShader(ID, fragmentShader); // Attach the fragment shader to the shader program
+	glLinkProgram(ID); // Link everything into a single shader program
 
-	glGetProgramiv(ID, GL_LINK_STATUS, &success); //Проверяем успех линковки(объединения шейдеров в одну программу). Здесь процесс похож с проверкой компиляции шейдеров, только используем вместо glGetShaderiv - glGetProgramiv и нам нужен статус линковки, поэтому GL_LINK_STATUS
+	glGetProgramiv(ID, GL_LINK_STATUS, &success); // Check if linking (combining the shaders into a single program) succeeded. The process is similar to checking shader compilation, except we use glGetProgramiv instead of glGetShaderiv and check GL_LINK_STATUS for the linking status
 
 	if (!success) {
 		glGetProgramInfoLog(ID, sizeof(infoLog), NULL, infoLog);
@@ -92,15 +92,15 @@ int Shader::init(const char* vertexPath, const char* fragmentPath) {
 
 		Logger::fatal("CORE_ENGINE -> ERROR -> SHADER_PROGRAM -> LINK -> LINKING_FAILED");
 		Logger::fatal("Failed to link shaders to shader program");
-		Logger::info(infoLog); //Логгируем ошибки
+		Logger::info(infoLog); // Log errors
 
 		return -1;
 	}
 
 	glDeleteShader(vertexShader);
 	glDeleteShader(fragmentShader);
-	//Мы это делаем, чтобы освободить память видеокарты, т.к наши шейдеры уже записаны в нашу программу и нам не нужно больше их хранить по отдельности
-	//Есть также функция glDeleteProgram(). Она нужна, чтобы удалить именно программу, но нам нужно удалить именно шейдеры по отдельности. То есть наши шейдеры по-отдельности нам больше не понадобятся, они выполнили свою задачу - быть записаными в программу шейдеров
+	// We do this to free GPU memory, since our shaders are already linked into the program and we no longer need to keep them separately
+	// There is also glDeleteProgram(), which deletes the entire program, whereas we only want to delete the individual shader objects. In other words, we don't need the separate shaders anymore—they've served their purpose of being compiled and linked into the shader program
 
 	return 0;
 }

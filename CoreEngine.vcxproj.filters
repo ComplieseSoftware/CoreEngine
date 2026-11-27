@@ -52,6 +52,30 @@
     <Filter Include="API\Texture">
       <UniqueIdentifier>{ffc943ff-2970-4693-98e1-7326b776bd37}</UniqueIdentifier>
     </Filter>
+    <Filter Include="API\Input\Mouse">
+      <UniqueIdentifier>{c3402294-25d3-46f3-81e6-fbd645f45a95}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="API\Input\Keyboard">
+      <UniqueIdentifier>{c46ac24b-276d-4af8-898d-aa9f5c50a3a0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="AudioEngine">
+      <UniqueIdentifier>{e9d404bc-00ad-40e4-9dc3-95256eb0eae5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Файлы ресурсов\stb_image">
+      <UniqueIdentifier>{c7eef972-6fac-41e5-b04b-182762d7bfc9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Файлы ресурсов\miniaudio">
+      <UniqueIdentifier>{facb8963-5eae-4927-8b82-412dce2ef20e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="AudioEngine\2D">
+      <UniqueIdentifier>{e451a440-9276-4eaa-987a-21bbd4c002d0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="API\Sound">
+      <UniqueIdentifier>{2bac5b11-e0a4-437d-a70c-17071ac5f688}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="API\Sound\2D">
+      <UniqueIdentifier>{a11da2f1-efdc-42d9-ae14-4362999bbb7a}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -72,9 +96,6 @@
     <ClCompile Include="src\renderer\textures\texture2D.cpp">
       <Filter>Renderer\Texture</Filter>
     </ClCompile>
-    <ClCompile Include="Dependencies\stb_image\stb_image.cpp">
-      <Filter>Файлы ресурсов</Filter>
-    </ClCompile>
     <ClCompile Include="src\logger\logger.cpp">
       <Filter>Logger</Filter>
     </ClCompile>
@@ -84,19 +105,28 @@
     <ClCompile Include="src\api\Application.cpp">
       <Filter>API\Application</Filter>
     </ClCompile>
-    <ClCompile Include="src\api\input\Input.cpp">
-      <Filter>API\Input</Filter>
-    </ClCompile>
     <ClCompile Include="src\api\texture\texture2DApi\GameTexture2D.cpp">
       <Filter>API\Texture</Filter>
+    </ClCompile>
+    <ClCompile Include="src\api\input\Keyboard\Inputkeyboard.cpp">
+      <Filter>API\Input\Keyboard</Filter>
+    </ClCompile>
+    <ClCompile Include="src\api\input\Mouse\InputMouse.cpp">
+      <Filter>API\Input\Mouse</Filter>
+    </ClCompile>
+    <ClCompile Include="Dependencies\stb_image\stb_image.cpp">
+      <Filter>Файлы ресурсов\stb_image</Filter>
+    </ClCompile>
+    <ClCompile Include="src\audioEngine\2DAudioEngine\AudioEngine2D.cpp">
+      <Filter>AudioEngine\2D</Filter>
+    </ClCompile>
+    <ClCompile Include="src\api\audio\audio2D\Audio2D.cpp">
+      <Filter>API\Sound\2D</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\renderer\window\windowRenderer.h">
       <Filter>Renderer\Window</Filter>
-    </ClInclude>
-    <ClInclude Include="Dependencies\stb_image\stb_image.h">
-      <Filter>Файлы ресурсов</Filter>
     </ClInclude>
     <ClInclude Include="src\renderer\textures\texture2D.h">
       <Filter>Renderer\Texture</Filter>
@@ -122,14 +152,32 @@
     <ClInclude Include="src\shaders\src\Shader.h">
       <Filter>Shaders\src</Filter>
     </ClInclude>
-    <ClInclude Include="src\api\input\Input.h">
-      <Filter>API\Input</Filter>
-    </ClInclude>
-    <ClInclude Include="src\api\input\InputKeys.h">
-      <Filter>API\Input</Filter>
-    </ClInclude>
     <ClInclude Include="src\api\texture\texture2DApi\GameTexture2D.h">
       <Filter>API\Texture</Filter>
+    </ClInclude>
+    <ClInclude Include="src\api\input\Keyboard\Inputkeyboard.h">
+      <Filter>API\Input\Keyboard</Filter>
+    </ClInclude>
+    <ClInclude Include="src\api\input\Keyboard\InputKeysKeyboard.h">
+      <Filter>API\Input\Keyboard</Filter>
+    </ClInclude>
+    <ClInclude Include="src\api\input\Mouse\InputKeysMouse.h">
+      <Filter>API\Input\Mouse</Filter>
+    </ClInclude>
+    <ClInclude Include="src\api\input\Mouse\InputMouse.h">
+      <Filter>API\Input\Mouse</Filter>
+    </ClInclude>
+    <ClInclude Include="Dependencies\stb_image\stb_image.h">
+      <Filter>Файлы ресурсов\stb_image</Filter>
+    </ClInclude>
+    <ClInclude Include="Dependencies\miniaudio\miniaudio.h">
+      <Filter>Файлы ресурсов\miniaudio</Filter>
+    </ClInclude>
+    <ClInclude Include="src\audioEngine\2DAudioEngine\AudioEngine2D.h">
+      <Filter>AudioEngine\2D</Filter>
+    </ClInclude>
+    <ClInclude Include="src\api\audio\audio2D\Audio2D.h">
+      <Filter>API\Sound\2D</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

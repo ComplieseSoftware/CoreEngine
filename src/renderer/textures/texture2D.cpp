@@ -1,45 +1,46 @@
 #include <glad/glad.h>
 #include <string>
 
-#include "../Dependencies/stb_image/stb_image.h"
+#include "stb_image/stb_image.h"
 
 #include "texture2D.h"
 #include "logger/Logger.h"
 
 void Texture2D::loadTexture2D(const std::string& path) {
-	data = stbi_load(path.c_str(), &width, &height, &nrChannels, 0); //Загружаем данные текстуры
+	data = stbi_load(path.c_str(), &width, &height, &nrChannels, 0); // Load texture data
 
-	glPixelStorei(GL_UNPACK_ALIGNMENT, 1); //Указываем формат чтения данных(иначе будет ошибка, что память не может read)
+	glPixelStorei(GL_UNPACK_ALIGNMENT, 1); // Specify the data reading format (otherwise an access violation error will occur: memory could not be read)
 
-	glGenTextures(1, &texture); //Создаём объект текстуры
-	glBindTexture(GL_TEXTURE_2D, texture); //Регистрируем текстуру, как GL_TEXTURE_2D, т.к у нас 2D текстура
+	glGenTextures(1, &texture); // Create a texture object
+	glBindTexture(GL_TEXTURE_2D, texture); // Bind the texture as GL_TEXTURE_2D since we are working with a 2D texture
 
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT); //Настраиваем сэмоплирование текстур. В первом парамтеры указываем с какими текстурами мы работаем(2D, поэтому GL_TEXTURE_2D), во 2-м указываем какую опцию и для какой оси мы хотим настроить, в 3-ем указываем режим повторения текстуры(У нас обычное повторение)
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT); // Configure texture wrapping. The 1st parameter specifies the texture target (2D, so GL_TEXTURE_2D), the 2nd specifies the option and axis to configure, and the 3rd sets the wrapping mode (we use standard repeating)
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR_MIPMAP_LINEAR);
 
 	if (data) {
 		if (nrChannels == 3) {
-			glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, width, height, 0, GL_RGB, GL_UNSIGNED_BYTE, data); //Создаём саму текстуру:
+			glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, width, height, 0, GL_RGB, GL_UNSIGNED_BYTE, data); // Generate the texture
 			/*
-				В 1-м праметре указываем целевую текстуру(наша текстура GL_TEXTURE_2D, поэтому и здесь также)
-				Во 2-м параметре определяем уровень мип-карты, для которого мы хотим создать текстуру, мы оставим его на базовом уровне(0)
-				В 3-ем указываем в каком формате хранить текстуру, у нас это RGB
-				В 4-ом и 5-м параметре указываем ширину и длину текстуры
-				В 6-м параметре ВСЕГДА должно быть 0
-				В 7-м и 8-м параметре формат и тип данных исходного изображения(мы загрузили изображение с использованием значений RGB и сохранили их в виде символов(беззнаковых байт)
-				в 9-м параметре указываем фактические данные изображения(у нас это переменная data)
+				1st parameter: specify the texture target (our texture is GL_TEXTURE_2D, so we use it here as well)
+				2nd parameter: specify the mipmap level for which we want to create a texture; we leave it at the base level (0)
+				3rd parameter: specify the format in which to store the texture (RGB in our case)
+				4th and 5th parameters: specify the width and height of the texture
+				6th parameter: should ALWAYS be 0 (legacy border parameter)
+				7th and 8th parameters: specify the format and data type of the source image (we loaded the image with RGB values and stored them as chars / unsigned bytes)
+				9th parameter: pass the actual image data (our `data` variable)
 
-				После вызова этой функции наш объект текстуры(texture) связан с изображением текстуры(data)
+				After calling this function, our texture object (`texture`) has the texture image (`data`) attached to it.
 			*/
-			glGenerateMipmap(GL_TEXTURE_2D); //Генерируем мип-карту для нашей текстуры
+
+			glGenerateMipmap(GL_TEXTURE_2D); // Generate mipmaps for our texture
 			glBindTexture(GL_TEXTURE_2D, 0);
 		}
 		else if (nrChannels == 4) {
-			glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, width, height, 0, GL_RGBA, GL_UNSIGNED_BYTE, data); //Создаём саму текстуру
-			glGenerateMipmap(GL_TEXTURE_2D); //Генерируем мип-карту для нашей текстуры
-			glBindTexture(GL_TEXTURE_2D, 0); //Отключаем нашу текстуру
+			glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, width, height, 0, GL_RGBA, GL_UNSIGNED_BYTE, data); // Generate the texture
+			glGenerateMipmap(GL_TEXTURE_2D); // Generate mipmaps for our texture
+			glBindTexture(GL_TEXTURE_2D, 0); // Disable texture
 		}
 	}
 	else {
