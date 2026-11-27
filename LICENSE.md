@@ -84,5 +84,4 @@ This Software utilizes the following third-party open-source libraries; the use 
 * **GLAD** — Public Domain / CC0 / MIT
 * **GLFW** — zlib/libpng License (Copyright (c) 2002–2006 Marcus Geelnard, Copyright (c) 2006–2019 Camilla Löwy)
 * **stb_image** — Public Domain / MIT License (Copyright (c) 2017 Sean Barrett)
-
-
+* **miniaudio** - Public Domain / MIT No Attribution License (Copyright (c) 2026 David Reid)

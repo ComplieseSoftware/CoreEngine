@@ -29,6 +29,7 @@ Constructive feedback, code reviews, architecture tips, and contributions are al
   - Game client projects (such as `Pong.exe`) interact strictly via the public `api/` layer.
 - **Application Lifecycle & Event Hooks:**
   - Centralized `Application` orchestrator managing window creation, runtime state, and clean shutdown.
+  - Full audio support powered by a built-in `audio engine`.
   - Frame-rate independent physics powered by high-precision Delta Time calculation (`dt`).
   - Decoupled game loop execution via functional callbacks (`std::function`).
 - **Low-Level Graphics Pipeline:**
@@ -49,6 +50,7 @@ Included in the ecosystem is a proof-of-concept **Pong** game powered entirely b
 - Smooth paddle interpolation via decoupled input polling and `deltaTime`.
 - Axis-Aligned Bounding Box (AABB) collision checks and velocity reflection.
 - Runtime dynamic texture switching and custom splash screen state machine.
+- Full audio support powered by a built-in audio engine
 - Standalone Windows installer built with Inno Setup.
 
 ---
@@ -61,6 +63,7 @@ All dependencies are strictly vetted for performance and permissive commercial l
 - **Windowing & Context:** [GLFW](https://www.glfw.org/) (Custom built from source for x64) *(zlib/libpng License)*
 - **OpenGL Loader:** [GLAD](https://glad.dav1d.de/) *(Public Domain / MIT)*
 - **Image Loading:** [stb_image](https://github.com/nothings/stb) *(Public Domain / MIT)*
+- **Audio Library:** [miniaudio](https://miniaud.io/) *(Public Domain / MIT)*
 
 ---
 
@@ -68,7 +71,7 @@ All dependencies are strictly vetted for performance and permissive commercial l
 
 ### Prerequisites
 - Windows 10 / 11 (64-bit)
-- Visual Studio 2022 (with **"Desktop development with C++"** workload)
+- Visual Studio 2026 (with **"Desktop development with C++"** workload)
 - MSVC compiler supporting `/std:c++20`
 
 ### Steps
@@ -88,13 +91,13 @@ All dependencies are strictly vetted for performance and permissive commercial l
 
 - [ ] **Dear ImGui Integration:** Add built-in support for debug UI, real-time inspectors, and engine profiling tools.
 - [ ] **3D Rendering Pipeline:** Extend the renderer to support 3D meshes, perspective cameras, and spatial transformations.
-- [ ] **Audio Subsystem:** Integrate cross-platform audio playback for sound effects and background music.
+- [x] **Audio Subsystem:** Integrate cross-platform audio playback for sound effects and background music.
 - [ ] **Resource Management Overhaul:** Upgrade the asset system with centralized resource caching and RAII lifecycle management.
-- [ ] **Mouse Input Support:** Expand the hardware-agnostic `Input` API with cursor position tracking, scroll deltas, and mouse button events.
+- [x] **Mouse Input Support:** Expand the hardware-agnostic `Input` API with cursor position tracking, scroll deltas, and mouse button events.
 - [ ] **Core Systems Expansion:** Add new features, utilities, and optimizations to existing engine modules.
 
 ---
 
 ## License
 
-Distributed under the **MIT License**. See `LICENSE.md` for more information.
+Distributed under the **Apache License 2.0**. See `LICENSE.md` for more information.
